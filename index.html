@@ -49,6 +49,37 @@
 @media(max-width:760px){.hero{grid-template-columns:1fr;padding:40px 0}.profile-photo-wrap{min-height:330px;grid-row:1}.profile-photo{height:350px;width:min(100%,330px)}.photo-gallery img{height:145px}}
 @media(prefers-reduced-motion:reduce){.profile-photo,.profile-photo-wrap:before{animation:none}}
 
+
+/* Cinematic photo-background redesign */
+:root{--bg:#080f1b;--card:#111d2c;--ink:#f4f7ff;--muted:#b7c4d8;--line:#26384d;--lime:#62e6ef;--violet:#8c9cff}
+body{background:radial-gradient(ellipse at 80% 5%,#163b58 0,transparent 38%),radial-gradient(ellipse at 0% 35%,#18254a 0,transparent 35%),#080f1b;color:var(--ink)}
+header{position:relative;z-index:5;border-bottom:1px solid #ffffff12;backdrop-filter:blur(12px)}
+.brand{font-size:1.45rem;letter-spacing:-.07em}.brand b{color:var(--lime)}
+nav a{transition:color .2s ease,transform .2s ease}nav a:hover{color:var(--lime);transform:translateY(-2px)}
+.hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:590px;padding:72px 5%;margin:26px 0 48px;border:1px solid #a7d9ff22;border-radius:32px;overflow:hidden;background:#0a1422 url('IMG-20260927-WA0091.jpg') no-repeat right center;background-size:auto 115%;box-shadow:0 30px 90px #0005}
+.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#08111ff8 0%,#08111fe8 38%,#08111f7d 65%,#08111f18 100%),linear-gradient(0deg,#08111f9c,transparent 40%)}
+.hero>div:first-child{position:relative;max-width:660px;z-index:1;animation:fadeUp .9s ease both}
+.hero .profile-photo-wrap{display:none}
+.hero .pill{background:#ffffff0c;border-color:#62e6ef66;color:#d9faff;backdrop-filter:blur(12px);letter-spacing:.04em}
+.pill i{box-shadow:0 0 12px var(--lime)}
+h1{font-size:clamp(3.3rem,8vw,6.8rem);line-height:.94;letter-spacing:-.075em;text-wrap:balance;text-shadow:0 8px 35px #0006}
+h1 em{background:linear-gradient(100deg,#62e6ef,#b9a5ff,#c4f45b);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 5s linear infinite}
+.lead{max-width:540px;color:#d2deee;font-size:clamp(1rem,2vw,1.16rem)}
+.btn{border-radius:14px;border-color:#ffffff2c;background:#ffffff0b;color:#f4f7ff;backdrop-filter:blur(10px);transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.btn.primary{background:linear-gradient(110deg,#62e6ef,#c4f45b);color:#07131c;border:0;box-shadow:0 8px 28px #62e6ef2a}
+.btn:hover{transform:translateY(-4px);box-shadow:0 14px 32px #0005}
+section{scroll-margin-top:22px}.head h2{letter-spacing:-.045em}.card,.video-card{background:linear-gradient(145deg,#132235,#0e1928);border-color:#ffffff14}
+.photo-gallery img{border-radius:22px;box-shadow:0 12px 30px #0003}
+.photo-label{box-shadow:0 8px 24px #0005}
+@media(max-width:760px){
+.hero{min-height:600px;padding:34px 24px;align-items:flex-end;background-position:65% top;background-size:auto 80%;margin:18px 0 36px}
+.hero:before{background:linear-gradient(0deg,#08111fff 0%,#08111feF 34%,#08111f70 72%,#08111f25 100%),linear-gradient(90deg,#08111f70,transparent)}
+.hero>div:first-child{padding-top:260px}
+h1{font-size:clamp(3.1rem,15vw,5rem)}
+}
+@media(max-width:420px){.hero{min-height:570px;padding:25px 18px}.hero>div:first-child{padding-top:220px}.actions .btn{width:100%;text-align:center}}
+@media(prefers-reduced-motion:reduce){.hero>div:first-child,h1 em{animation:none!important}}
+
 </style>
 </head>
 <body><div class="wrap">
