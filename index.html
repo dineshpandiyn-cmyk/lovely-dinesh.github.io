@@ -80,12 +80,58 @@ h1{font-size:clamp(3.1rem,15vw,5rem)}
 @media(max-width:420px){.hero{min-height:570px;padding:25px 18px}.hero>div:first-child{padding-top:220px}.actions .btn{width:100%;text-align:center}}
 @media(prefers-reduced-motion:reduce){.hero>div:first-child,h1 em{animation:none!important}}
 
+
+/* Three-photo cinematic backdrop + signature order button */
+.hero{
+ background-image:
+ linear-gradient(90deg,#08111ff5 0%,#08111fe0 34%,#08111f83 59%,#08111f40 100%),
+ linear-gradient(0deg,#08111f9c 0%,transparent 48%),
+ url('Picsart_24-06-24_10-46-51-399.jpg'),
+ url('IMG-20260927-WA0079.jpg'),
+ url('IMG-20260927-WA0091.jpg');
+ background-position:center,center,left center,right top,right center;
+ background-size:cover,cover,auto 67%,auto 63%,auto 115%;
+ background-repeat:no-repeat;
+}
+.hero .profile-photo-wrap{display:none}
+.btn.primary{
+ position:relative;isolation:isolate;overflow:hidden;
+ display:inline-flex;align-items:center;justify-content:center;gap:10px;
+ padding:15px 23px;border:1px solid #baffff;
+ border-radius:16px;
+ background:linear-gradient(110deg,#5be7f0 0%,#8d9bff 48%,#c4f45b 100%);
+ background-size:220% 100%;
+ color:#06111d;font-weight:900;letter-spacing:.01em;
+ box-shadow:0 0 0 1px #62e6ef22,0 9px 28px #62e6ef40,0 0 36px #8c9cff24;
+ animation:orderGradient 5s ease infinite,orderPulse 3s ease-in-out infinite;
+ transition:transform .22s ease,box-shadow .22s ease;
+}
+.btn.primary:before{content:"";position:absolute;inset:-80% auto -80% -45%;width:35%;transform:rotate(22deg);background:linear-gradient(90deg,transparent,#ffffffc9,transparent);z-index:-1;animation:orderShine 4s ease-in-out infinite}
+.btn.primary:after{content:"↗";font-size:1.15em;font-weight:950}
+.btn.primary:hover{transform:translateY(-4px) scale(1.025);box-shadow:0 12px 35px #62e6ef55,0 0 0 5px #62e6ef16}
+@keyframes orderGradient{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes orderPulse{0%,100%{box-shadow:0 9px 28px #62e6ef32,0 0 0 0 #62e6ef00}50%{box-shadow:0 12px 34px #62e6ef48,0 0 0 5px #62e6ef10}}
+@keyframes orderShine{0%,55%{left:-45%}85%,100%{left:130%}}
+@media(max-width:760px){
+ .hero{background-image:
+ linear-gradient(0deg,#08111fff 0%,#08111feF 35%,#08111f77 74%,#08111f38 100%),
+ linear-gradient(90deg,#08111f66,transparent),
+ url('Picsart_24-06-24_10-46-51-399.jpg'),
+ url('IMG-20260927-WA0079.jpg'),
+ url('IMG-20260927-WA0091.jpg');
+ background-position:center,center,left top,right top,65% top;
+ background-size:cover,cover,auto 45%,auto 47%,auto 80%;
+ }
+ .btn.primary{width:100%;text-align:center;padding:15px 18px}
+}
+@media(prefers-reduced-motion:reduce){.btn.primary,.btn.primary:before{animation:none!important}}
+
 </style>
 </head>
 <body><div class="wrap">
 <header><a class="brand" href="#top">DINESH<b>.</b></a><nav aria-label="Main navigation"><a href="#services">Services</a><a href="#videos">Videos</a><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav></header>
 <main id="top">
-<div class="hero"><div><span class="pill"><i></i> Video editor · Creative designer</span><h1>Your Ideas.<br><em>My Editing.</em></h1><p class="lead">Need any digital work? I provide paid video editing, AI video creation, photo editing, posters, banners, documents, presentations and more. Just DM me — I’ll discuss your requirements and quote.</p><div class="actions"><a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">DM for Paid Work ↗</a><a class="btn" href="#work">Explore services ↓</a></div></div><div class="profile-photo-wrap"><img class="profile-photo" src="IMG-20260927-WA0091.jpg" alt="Dinesh profile photo" loading="eager"><div class="photo-label">Dinesh · Digital Services</div></div></div>
+<div class="hero"><div><span class="pill"><i></i> Video editor · Creative designer</span><h1>Your Ideas.<br><em>My Editing.</em></h1><p class="lead">Need any digital work? I provide paid video editing, AI video creation, photo editing, posters, banners, documents, presentations and more. Just DM me — I’ll discuss your requirements and quote.</p><div class="actions"><a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order Now · Paid Work</a><a class="btn" href="#work">Explore services ↓</a></div></div><div class="profile-photo-wrap"><img class="profile-photo" src="IMG-20260927-WA0091.jpg" alt="Dinesh profile photo" loading="eager"><div class="photo-label">Dinesh · Digital Services</div></div></div>
 <div class="ticker"><span>Video editing</span><span>AI story videos</span><span>Reels & shorts</span><span>Creative design</span></div>
 <section id="services"><div class="head"><div><div class="kicker">Paid digital services</div><h2>What I can create for you</h2></div><p>All services listed here are paid services. Have an idea or need help with a project? DM me on Instagram for pricing, orders and quotes.</p></div><div class="cards">
 <article class="card"><small>01 / PHOTO</small><h3>Photo Editing</h3><p>Birthday photos, photo enhancement, posters and banners, social media designs.</p></article>
@@ -110,9 +156,9 @@ h1{font-size:clamp(3.1rem,15vw,5rem)}
 <a class="video-card" href="https://www.instagram.com/reel/Dc5xiHmIcC8/" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><span class="play">▶</span><div><h3>Featured Reel 03</h3><p>Watch on Instagram ↗</p></div></a>
 <a class="video-card" href="https://www.instagram.com/reel/Dck8ZiiIT39/" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><span class="play">▶</span><div><h3>Featured Reel 04</h3><p>Watch on Instagram ↗</p></div></a>
 <a class="video-card" href="https://www.instagram.com/reel/Dd3yUyUP6pe/" target="_blank" rel="noopener noreferrer" style="text-decoration:none"><span class="play">▶</span><div><h3>Featured Reel 05</h3><p>Watch on Instagram ↗</p></div></a>
-</div><div class="actions"><a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order a Video — DM Now ↗</a></div></section>
+</div><div class="actions"><a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order Now · DM on Instagram</a></div></section>
 <section id="work"><div class="head"><div><div class="kicker">Selected categories</div><h2>Made with creativity</h2></div><p>These are portfolio categories. Message me to see relevant samples and discuss your brief.</p></div><div class="workgrid"><article class="work"><small>01 — Social content</small><h3>Reels that hold attention.</h3></article><article class="work"><small>02 — Storytelling</small><h3>AI cinema & story scenes.</h3></article><article class="work"><small>03 — Personal moments</small><h3>Birthday edits & memories.</h3></article><article class="work"><small>04 — Brand design</small><h3>Posters, covers & banners.</h3></article></div></section>
 <section id="gallery"><div class="head"><div><div class="kicker">Behind the creator</div><h2>My Photo Gallery</h2></div><p>A little look at the person behind Dinesh Digital Services.</p></div><div class="photo-gallery"><img src="IMG-20260927-WA0079.jpg" alt="Dinesh creative portrait" loading="lazy"><img src="IMG-20260927-WA0091.jpg" alt="Dinesh profile photo" loading="lazy"><img src="Picsart_24-06-24_10-46-51-399.jpg" alt="Dinesh artwork portrait" loading="lazy"></div></section>
 <section id="about"><div class="about"><div><div class="kicker">A little about me</div><h2>Creative thinking. Careful editing.</h2></div><div class="aboutbox"><p>I’m Dinesh, a video editor and creative designer building a portfolio through visual storytelling and digital content. I work on paid editing projects and aim to make every edit clear, engaging and suited to the client’s idea.</p><div class="chips"><span class="chip">Video editing</span><span class="chip">AI video workflows</span><span class="chip">PowerPoint</span><span class="chip">Basic computer skills</span><span class="chip">Social media design</span></div></div></div></section>
-<section id="contact" style="padding-bottom:35px"><div class="contact"><div class="kicker">Paid work · Orders & quotes</div><h2>Need any digital work? Just DM me — I’ll handle it!</h2><p>All services are paid. Tell me what you need, share your reference or script, and I’ll reply with the details and price. Friendly support and clear communication from start to finish.</p><div class="actions"><a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order / Quote — DM Now ↗</a><a class="btn" href="https://www.instagram.com/lovely__dinesh__tgr/" target="_blank" rel="noopener noreferrer">Admin Instagram ↗</a><a class="btn" href="https://www.linkedin.com/in/k-dinesh-a489623a4/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="btn" href="https://github.com/dineshpandiyn-cmyk" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></section>
+<section id="contact" style="padding-bottom:35px"><div class="contact"><div class="kicker">Paid work · Orders & quotes</div><h2>Need any digital work? Just DM me — I’ll handle it!</h2><p>All services are paid. Tell me what you need, share your reference or script, and I’ll reply with the details and price. Friendly support and clear communication from start to finish.</p><div class="actions"><a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order Now · Get a Quote</a><a class="btn" href="https://www.instagram.com/lovely__dinesh__tgr/" target="_blank" rel="noopener noreferrer">Admin Instagram ↗</a><a class="btn" href="https://www.linkedin.com/in/k-dinesh-a489623a4/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="btn" href="https://github.com/dineshpandiyn-cmyk" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></section>
 </main><footer><span>© <span id="year">2026</span> Dinesh · Creative portfolio</span><span>Built for creativity, made for the web.</span></footer></div><script>document.getElementById('year').textContent=new Date().getFullYear();</script></body></html>
