@@ -13,7 +13,8 @@
 <title>Lovely Dinesh | Video editing, AI videos and design</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <style>
 :root{
   --reel:#090b0f;
@@ -24,7 +25,7 @@
   --playhead:#ff4a3d;
   --tungsten:#f2b75b;
   --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
-  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
 html{color-scheme:dark;scroll-behavior:smooth;scroll-padding-top:16px}
@@ -103,15 +104,25 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 .head p{margin:0;max-width:46ch;color:var(--muted)}
 
 /* Services */
-.group{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,8fr);gap:20px 48px;padding-block:34px;border-top:1px solid var(--line)}
-.group:last-child{border-bottom:1px solid var(--line)}
-.group h3{font-weight:800;font-size:clamp(1.9rem,3.2vw,2.6rem);line-height:.95}
-.group .blurb{margin:10px 0 0;max-width:28ch;font-size:.95rem;color:var(--muted)}
-.list{list-style:none;margin:0;padding:0}
-.list li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:4px 24px;padding-block:13px;border-top:1px solid var(--line)}
-.list li:first-child{padding-top:0;border-top:0}
-.list b{font-weight:600}
-.list span{font-size:.95rem;color:var(--muted)}
+.svcs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.svc{--c:#ff4a3d;position:relative;display:flex;flex-direction:column;min-height:236px;padding:26px 24px 24px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,#141922,var(--bin));overflow:hidden;transition:transform .3s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.svc::before{content:"";position:absolute;left:0;top:0;height:3px;width:34%;background:var(--c);transition:width .45s cubic-bezier(.2,.8,.2,1)}
+.svc::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,var(--c) 0,transparent 68%);opacity:.08;transition:opacity .35s,transform .45s}
+.svc:hover{transform:translateY(-8px);border-color:var(--c);box-shadow:0 18px 40px -14px var(--c)}
+.svc:hover::before{width:100%}
+.svc:hover::after{opacity:.22;transform:scale(1.25)}
+.c-red{--c:#ff5a4d}.c-gold{--c:#f2b75b}.c-blue{--c:#6cb4f0}.c-green{--c:#6fd6a5}
+.ico{display:grid;place-items:center;width:52px;height:52px;border-radius:13px;color:var(--c);background:color-mix(in srgb,var(--c) 14%,transparent);border:1px solid color-mix(in srgb,var(--c) 38%,transparent);transition:transform .35s cubic-bezier(.3,1.6,.5,1),background .3s,color .3s}
+.ico svg{width:26px;height:26px}
+.svc:hover .ico{transform:rotate(-8deg) scale(1.14);background:var(--c);color:#0b0d11}
+.tag{margin:22px 0 4px;font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--c)}
+.svc h3{font-family:var(--body);text-transform:none;font-weight:700;font-size:1.4rem;line-height:1.15;letter-spacing:-.015em}
+.desc{margin:10px 0 0;font-size:.97rem;line-height:1.55;color:var(--muted)}
+
+/* Boxes slide in once, staggered */
+.js .svc{opacity:0;transform:translateY(34px)}
+.js .svc.in{opacity:1;transform:none;transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.js .svc.in:hover{transform:translateY(-8px)}
 
 /* Reels */
 .reels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
@@ -150,6 +161,7 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 
 /* Small screens */
 @media(max-width:900px){
+  .svcs{grid-template-columns:repeat(2,minmax(0,1fr))}
   .reels{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:18px;margin-inline:-18px;padding:0 18px 12px}
   .reel{flex:0 0 min(62vw,240px);scroll-snap-align:start}
 }
@@ -165,14 +177,16 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
   .inner{gap:28px;padding-block:40px 20px}
   .tl-body{grid-template-columns:24px 1fr;gap:0 8px}
   .lane,.labels span{height:24px}
-  .head,.group,.about{grid-template-columns:1fr}
+  .svcs{grid-template-columns:1fr}
+  .svc{min-height:0}
+  .head,.about{grid-template-columns:1fr}
   .head{margin-bottom:32px}
-  .list li{grid-template-columns:1fr}
   .about{gap:36px}
   .tools div{grid-template-columns:70px 1fr}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
+  .js .svc{opacity:1;transform:none}
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 </style>
@@ -246,55 +260,97 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
       <p>Every service here is paid. Message me on Instagram with your idea and I'll reply with the details and the price.</p>
     </div>
 
-    <div class="group">
-      <div>
-        <h3>Video and AI</h3>
-        <p class="blurb">Reels, YouTube videos and AI-made stories.</p>
-      </div>
-      <ul class="list">
-        <li><b>Video editing</b><span>YouTube videos, Instagram Reels, event videos, titles and thumbnails.</span></li>
-        <li><b>AI video creation</b><span>AI story videos, Shorts, special occasion videos, AI visuals and effects.</span></li>
-        <li><b>Social media content</b><span>Posts, banners, Reels, profile design and content ideas.</span></li>
-      </ul>
-    </div>
-
-    <div class="group">
-      <div>
-        <h3>Photo and design</h3>
-        <p class="blurb">Edits, posters and print-ready cards.</p>
-      </div>
-      <ul class="list">
-        <li><b>Photo editing</b><span>Birthday photos, photo enhancement and social media designs.</span></li>
-        <li><b>Poster and banner design</b><span>Business posters, festival banners, social posts and custom designs.</span></li>
-        <li><b>Visiting card design</b><span>Business cards, professional layouts, print-ready files and multiple variations.</span></li>
-      </ul>
-    </div>
-
-    <div class="group">
-      <div>
-        <h3>Documents and office work</h3>
-        <p class="blurb">Typing, formatting and spreadsheets.</p>
-      </div>
-      <ul class="list">
-        <li><b>MS Word and documents</b><span>Typing, formatting, PDF files and document editing.</span></li>
-        <li><b>Resume preparation</b><span>Professional formatting, a clean modern design and editable files.</span></li>
-        <li><b>MS Excel</b><span>Basic formulas, spreadsheets, data entry and data management.</span></li>
-        <li><b>PowerPoint presentations</b><span>Study and business presentations, creative slides and editable files.</span></li>
-        <li><b>PDF formatting</b><span>PDF conversion, merge or split, and clean professional layouts.</span></li>
-        <li><b>Google Forms</b><span>Registration forms, survey forms and response setup.</span></li>
-        <li><b>Google Docs and Sheets</b><span>Document editing, sheet management, collaboration support and file sharing.</span></li>
-      </ul>
-    </div>
-
-    <div class="group">
-      <div>
-        <h3>Student support and web</h3>
-        <p class="blurb">Projects, reports and simple websites.</p>
-      </div>
-      <ul class="list">
-        <li><b>College project support</b><span>Report formatting, presentation design, assignment formatting and study guidance.</span></li>
-        <li><b>Basic website creation</b><span>Portfolio and personal websites, HTML and CSS, simple responsive pages.</span></li>
-      </ul>
+    <div class="svcs">
+      <article class="svc c-red">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9.5v5l4.5-2.5z"/></svg></span>
+        <p class="tag">Video</p>
+        <h3>Video editing</h3>
+        <p class="desc">YouTube videos, Instagram Reels, event videos, titles and thumbnails.</p>
+      </article>
+      <article class="svc c-red">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></span>
+        <p class="tag">Video</p>
+        <h3>AI video creation</h3>
+        <p class="desc">AI story videos, Shorts, special occasion videos, AI visuals and effects.</p>
+      </article>
+      <article class="svc c-red">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="12" r="2.5"/><circle cx="17" cy="6" r="2.5"/><circle cx="17" cy="18" r="2.5"/><path d="M8.2 10.8l6.6-3.6M8.2 13.2l6.6 3.6"/></svg></span>
+        <p class="tag">Video</p>
+        <h3>Social media content</h3>
+        <p class="desc">Posts, banners, Reels, profile design and content ideas.</p>
+      </article>
+      <article class="svc c-gold">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg></span>
+        <p class="tag">Design</p>
+        <h3>Photo editing</h3>
+        <p class="desc">Birthday photos, photo enhancement and social media designs.</p>
+      </article>
+      <article class="svc c-gold">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/></svg></span>
+        <p class="tag">Design</p>
+        <h3>Poster and banner design</h3>
+        <p class="desc">Business posters, festival banners, social posts and custom designs.</p>
+      </article>
+      <article class="svc c-gold">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8.5" cy="11" r="1.8"/><path d="M13 10h5M13 13.5h4M6 15.5h5"/></svg></span>
+        <p class="tag">Design</p>
+        <h3>Visiting card design</h3>
+        <p class="desc">Business cards, professional layouts, print-ready files and variations.</p>
+      </article>
+      <article class="svc c-blue">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 15.5h6"/></svg></span>
+        <p class="tag">Office</p>
+        <h3>MS Word and documents</h3>
+        <p class="desc">Typing, formatting, PDF files and document editing.</p>
+      </article>
+      <article class="svc c-blue">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="9.5" r="2.5"/><path d="M7.5 17c.8-2.2 2.5-3.2 4.5-3.2s3.7 1 4.5 3.2"/></svg></span>
+        <p class="tag">Office</p>
+        <h3>Resume preparation</h3>
+        <p class="desc">Professional formatting, a clean modern design and editable files.</p>
+      </article>
+      <article class="svc c-blue">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></svg></span>
+        <p class="tag">Office</p>
+        <h3>MS Excel</h3>
+        <p class="desc">Basic formulas, spreadsheets, data entry and data management.</p>
+      </article>
+      <article class="svc c-blue">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 12.5l3-3 2.5 2 3.5-4"/></svg></span>
+        <p class="tag">Office</p>
+        <h3>PowerPoint presentations</h3>
+        <p class="desc">Study and business presentations, creative slides and editable files.</p>
+      </article>
+      <article class="svc c-blue">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 17.5c3-1 4-4 3-6.5-.9 2.5.4 5 3.5 5.5"/></svg></span>
+        <p class="tag">Office</p>
+        <h3>PDF formatting</h3>
+        <p class="desc">PDF conversion, merge or split, and clean professional layouts.</p>
+      </article>
+      <article class="svc c-blue">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8l1.3 1.3L12 7M8.5 13l1.3 1.3L12 12M14 8.5h2.5M14 13.5h2.5"/></svg></span>
+        <p class="tag">Office</p>
+        <h3>Google Forms</h3>
+        <p class="desc">Registration forms, survey forms and response setup.</p>
+      </article>
+      <article class="svc c-blue">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 6h9l3 3v11H5z"/><path d="M9 3h8l3 3v11"/><path d="M8 13h6M8 16.5h6"/></svg></span>
+        <p class="tag">Office</p>
+        <h3>Google Docs and Sheets</h3>
+        <p class="desc">Document editing, sheet management, collaboration support and file sharing.</p>
+      </article>
+      <article class="svc c-green">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5L12 5l9 4.5-9 4.5z"/><path d="M7 12v4.5c1.4 1.4 3.2 2 5 2s3.6-.6 5-2V12"/><path d="M21 9.5V15"/></svg></span>
+        <p class="tag">Student and web</p>
+        <h3>College project support</h3>
+        <p class="desc">Report formatting, presentation design, assignment formatting and study guidance.</p>
+      </article>
+      <article class="svc c-green">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="6.5" r=".6"/><circle cx="8.5" cy="6.5" r=".6"/><path d="M8.5 14l-2 2 2 2M15.5 14l2 2-2 2M13 13l-2 6"/></svg></span>
+        <p class="tag">Student and web</p>
+        <h3>Basic website creation</h3>
+        <p class="desc">Portfolio and personal websites, HTML and CSS, simple responsive pages.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -377,6 +433,26 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 <script>
 (function(){
   document.getElementById('year').textContent = new Date().getFullYear();
+
+
+  // Service boxes slide in once as they enter the screen
+  var boxes = [].slice.call(document.querySelectorAll('.svc'));
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) {
+    boxes.forEach(function(b){ b.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var i = boxes.indexOf(e.target) % 3;
+        e.target.style.transitionDelay = (i * 90) + 'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+        setTimeout(function(){ e.target.style.transitionDelay = ''; }, 1000);
+      });
+    }, {threshold: .15});
+    boxes.forEach(function(b){ io.observe(b); });
+  }
 
   var slides = [].slice.call(document.querySelectorAll('.slide'));
   var clips = [].slice.call(document.querySelectorAll('.v1 .clip'));
