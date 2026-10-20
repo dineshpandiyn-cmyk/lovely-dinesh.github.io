@@ -156,6 +156,14 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 .contact{padding:clamp(28px,6vw,64px);border:1px solid var(--line);border-radius:16px;background:var(--bin)}
 .contact h2{font-size:clamp(3.2rem,10vw,8rem);line-height:.88;font-weight:900}
 .contact p{max-width:52ch;margin:22px 0 28px;color:var(--muted)}
+.profiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.prof{min-height:0;padding:24px;background:linear-gradient(180deg,#171c26,#10141b)}
+.prof .who{display:flex;align-items:center;gap:14px}
+.prof .who h3{font-size:1.2rem;overflow-wrap:anywhere}
+.contact .prof .tag{margin:2px 0 0;max-width:none}
+.contact .prof .desc{margin:18px 0 22px;max-width:44ch;color:#c3ccda}
+.prof .btn{align-self:flex-start;margin-top:auto}
+.more{margin-top:18px}
 
 .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:12px 40px;color:var(--muted);font-size:.9rem}
 
@@ -177,7 +185,7 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
   .inner{gap:28px;padding-block:40px 20px}
   .tl-body{grid-template-columns:24px 1fr;gap:0 8px}
   .lane,.labels span{height:24px}
-  .svcs{grid-template-columns:1fr}
+  .svcs,.profiles{grid-template-columns:1fr}
   .svc{min-height:0}
   .head,.about{grid-template-columns:1fr}
   .head{margin-bottom:32px}
@@ -413,9 +421,25 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
     <div class="contact">
       <h2>Send me<br>your idea.</h2>
       <p>All services are paid. Tell me what you need and share a reference or script. I'll reply with the details and the price.</p>
-      <div class="actions">
-        <a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order on Instagram</a>
-        <a class="btn" href="https://www.instagram.com/lovely__dinesh__tgr/" target="_blank" rel="noopener noreferrer">Personal Instagram</a>
+      <div class="profiles">
+        <article class="svc c-red prof">
+          <div class="who">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></span>
+            <div><h3>dr_story_nest</h3><p class="tag">Work Instagram</p></div>
+          </div>
+          <p class="desc">Paid video editing, AI story videos, photo edits and designs. Send a message here for orders and quotes.</p>
+          <a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order on Instagram</a>
+        </article>
+        <article class="svc c-blue prof">
+          <div class="who">
+            <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></span>
+            <div><h3>lovely__dinesh__tgr</h3><p class="tag">Personal Instagram</p></div>
+          </div>
+          <p class="desc">Lovely Dinesh's personal page.</p>
+          <a class="btn" href="https://www.instagram.com/lovely__dinesh__tgr/" target="_blank" rel="noopener noreferrer">Open profile</a>
+        </article>
+      </div>
+      <div class="actions more">
         <a class="btn" href="https://www.linkedin.com/in/k-dinesh-a489623a4/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="btn" href="https://github.com/dineshpandiyn-cmyk" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
