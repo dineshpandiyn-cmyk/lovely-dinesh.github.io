@@ -126,17 +126,15 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 
 /* Reels */
 .reels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
-.reel{position:relative;display:flex;flex-direction:column;justify-content:flex-end;aspect-ratio:9/16;padding:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--g);text-decoration:none;transition:border-color .2s,transform .2s}
-.reel:hover{border-color:var(--tungsten);transform:translateY(-3px)}
-.reel svg{position:absolute;left:50%;top:44%;width:58px;height:58px;transform:translate(-50%,-50%);transition:transform .2s}
-.reel:hover svg{transform:translate(-50%,-50%) scale(1.1)}
-.reel b{font-family:var(--display);font-weight:800;font-size:1.7rem;line-height:1;text-transform:uppercase}
-.reel span{font-size:.85rem;color:#c3ccda}
-.g1{--g:linear-gradient(160deg,#1c2d44,#0e131b 70%)}
-.g2{--g:linear-gradient(160deg,#3d2c1a,#0e131b 70%)}
-.g3{--g:linear-gradient(160deg,#2c2142,#0e131b 70%)}
-.g4{--g:linear-gradient(160deg,#173830,#0e131b 70%)}
-.g5{--g:linear-gradient(160deg,#41212a,#0e131b 70%)}
+.reel{display:flex;flex-direction:column;gap:2px;min-width:0;text-decoration:none}
+.frame{position:relative;display:block;aspect-ratio:9/16;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bin);transition:border-color .25s,transform .3s,box-shadow .3s}
+.frame img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.frame .play{position:absolute;left:50%;top:50%;width:62px;height:62px;transform:translate(-50%,-50%) scale(.8);opacity:0;transition:opacity .25s,transform .3s}
+.reel:hover .frame,.reel:focus-visible .frame{border-color:var(--tungsten);transform:translateY(-4px);box-shadow:0 16px 36px -14px var(--tungsten)}
+.reel:hover .frame img{transform:scale(1.05)}
+.reel:hover .play,.reel:focus-visible .play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.reel b{display:block;margin-top:10px;font-family:var(--display);font-weight:800;font-size:1.4rem;line-height:1;text-transform:uppercase;color:var(--text)}
+.reel .go{font-size:.88rem;color:var(--muted)}
 
 /* About */
 .about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
@@ -370,25 +368,25 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
       <p>Five Reels I edited. Tap any frame to watch the original on Instagram. Want one like it? Send me a message.</p>
     </div>
     <div class="reels">
-      <a class="reel g1" href="https://www.instagram.com/reel/DcOSOjZoeMT/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 1 on Instagram">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg>
-        <b>Reel 1</b><span>Watch on Instagram</span>
+      <a class="reel" href="https://www.instagram.com/reel/DcOSOjZoeMT/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 1 on Instagram">
+        <span class="frame"><img src="assets/reel-1.jpg" alt="Tamil Reel cover: a young woman refusing a tiffin box from her mother, with the title Ammavin Anbu" width="720" height="1280" loading="lazy"><svg class="play" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(0,0,0,.45)" stroke="rgba(255,255,255,.8)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg></span>
+        <b>Reel 1</b><span class="go">Watch on Instagram</span>
       </a>
-      <a class="reel g2" href="https://www.instagram.com/reel/DdEL5rCJakv/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 2 on Instagram">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg>
-        <b>Reel 2</b><span>Watch on Instagram</span>
+      <a class="reel" href="https://www.instagram.com/reel/DdEL5rCJakv/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 2 on Instagram">
+        <span class="frame"><img src="assets/reel-2.jpg" alt="Tamil Reel cover: a crying boy with folded hands beside a cow and her calf at sunset" width="720" height="1280" loading="lazy"><svg class="play" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(0,0,0,.45)" stroke="rgba(255,255,255,.8)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg></span>
+        <b>Reel 2</b><span class="go">Watch on Instagram</span>
       </a>
-      <a class="reel g3" href="https://www.instagram.com/reel/Dc5xiHmIcC8/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 3 on Instagram">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg>
-        <b>Reel 3</b><span>Watch on Instagram</span>
+      <a class="reel" href="https://www.instagram.com/reel/Dc5xiHmIcC8/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 3 on Instagram">
+        <span class="frame"><img src="assets/reel-3.jpg" alt="Tamil Reel cover: a stone temple step with a sad face, people walking up to a temple behind it" width="720" height="1280" loading="lazy"><svg class="play" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(0,0,0,.45)" stroke="rgba(255,255,255,.8)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg></span>
+        <b>Reel 3</b><span class="go">Watch on Instagram</span>
       </a>
-      <a class="reel g4" href="https://www.instagram.com/reel/Dck8ZiiIT39/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 4 on Instagram">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg>
-        <b>Reel 4</b><span>Watch on Instagram</span>
+      <a class="reel" href="https://www.instagram.com/reel/Dck8ZiiIT39/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 4 on Instagram">
+        <span class="frame"><img src="assets/reel-4.jpg" alt="Tamil Reel cover: a polluted riverbank with a cow among festival waste, and a Ganesh idol in the water" width="720" height="1280" loading="lazy"><svg class="play" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(0,0,0,.45)" stroke="rgba(255,255,255,.8)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg></span>
+        <b>Reel 4</b><span class="go">Watch on Instagram</span>
       </a>
-      <a class="reel g5" href="https://www.instagram.com/reel/Dd3yUyUP6pe/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 5 on Instagram">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(255,255,255,.14)" stroke="rgba(255,255,255,.55)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg>
-        <b>Reel 5</b><span>Watch on Instagram</span>
+      <a class="reel" href="https://www.instagram.com/reel/Dd3yUyUP6pe/" target="_blank" rel="noopener noreferrer" aria-label="Watch Reel 5 on Instagram">
+        <span class="frame"><img src="assets/reel-5.jpg" alt="Dinesh sitting on a blue sports bike at the beach under a cloudy sky" width="720" height="1280" loading="lazy"><svg class="play" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="31" fill="rgba(0,0,0,.45)" stroke="rgba(255,255,255,.8)"/><path d="M26 20v24l20-12z" fill="#fff"/></svg></span>
+        <b>Reel 5</b><span class="go">Watch on Instagram</span>
       </a>
     </div>
   </div>
