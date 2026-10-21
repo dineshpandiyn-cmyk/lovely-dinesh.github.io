@@ -53,54 +53,9 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 .bar nav a{color:var(--muted);text-decoration:none;font-size:.95rem;padding:4px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
 .bar nav a:hover{color:var(--text);border-color:var(--tungsten)}
 
-/* Hero */
-.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;justify-content:center;min-height:min(86svh,780px);border-block:1px solid var(--line)}
-.stage{position:absolute;inset:0 0 0 36%;z-index:0;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 40%);mask-image:linear-gradient(90deg,transparent 0,#000 40%)}
-.slide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
-.slide.on{opacity:1}
-.slide img{display:block;width:100%;height:100%;max-width:none;object-fit:cover;transform:scale(1.1);transition:transform 0s .45s}
-.slide.on img{transform:scale(1);transition:transform 5.2s linear}
-.s-beach img{object-position:50% 28%}
-.s-portrait img{object-position:50% 85%;filter:brightness(.82) saturate(1.05)}
-.s-bike img{object-position:50% 12%}
-.hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,var(--reel) 0,rgba(9,11,15,.85) 22%,transparent 55%),linear-gradient(90deg,var(--reel) 0,rgba(9,11,15,.6) 30%,transparent 55%)}
-.inner{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:40px;padding-block:56px 28px}
-.hero .hero-title{font-weight:900;font-size:clamp(4rem,9.5vw,9rem);line-height:.86;letter-spacing:-.005em;text-shadow:0 6px 40px rgba(0,0,0,.5)}
-.hero .hero-title span{display:block}
-.lead{max-width:44ch;margin:22px 0 0;font-size:1.12rem;color:#d3dae6}
-.hero .actions{margin-top:28px}
-
-/* Timeline */
-.tl{border:1px solid var(--line);border-radius:10px;background:rgba(13,16,21,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:10px 12px 12px;--t:0}
-.tl-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px;font-size:.82rem;color:var(--muted)}
-.rec{display:inline-flex;align-items:center;gap:8px;color:var(--tungsten);font-weight:600;letter-spacing:.04em;font-variant-numeric:tabular-nums}
-.rec i{width:9px;height:9px;border-radius:50%;background:var(--playhead);animation:rec 1.2s ease-in-out infinite}
-@keyframes rec{50%{opacity:.25}}
-.tl-body{display:grid;grid-template-columns:30px 1fr;gap:0 10px}
-.labels{display:flex;flex-direction:column;padding-top:24px;font-size:.72rem;font-weight:600;color:var(--muted)}
-.labels span{height:28px;margin-bottom:6px;display:flex;align-items:center}
-.lanes{position:relative}
-.ruler{position:relative;height:18px;border-bottom:1px solid var(--line);font-size:.7rem;color:var(--muted);background:repeating-linear-gradient(90deg,#3a4452 0 1px,transparent 1px calc(100% / 15)) bottom/100% 6px no-repeat}
-.ruler span{position:absolute;top:0}
-.ruler span:nth-child(2){left:33.33%}
-.ruler span:nth-child(3){left:66.66%}
-.ruler span:nth-child(4){right:0}
-.lane{position:relative;height:28px;margin-top:6px}
-.clip{position:absolute;top:0;bottom:0;display:flex;align-items:center;padding:0 9px;border-radius:4px;overflow:hidden;white-space:nowrap;font-size:.74rem;font-weight:600;color:#0b0d11;transition:filter .2s,box-shadow .2s}
-.v1 .clip.on{filter:brightness(1.15);box-shadow:0 0 0 2px #fff inset}
-.v2 .clip{background:#1d2530;color:#c3ccda;border:1px solid #323c4a}
-.c-blue{background:#6cb4f0}.c-tung{background:var(--tungsten)}.c-teal{background:#8bd3c7}
-.wave{position:relative}
-.bars{position:absolute;inset:0;display:flex;align-items:center;gap:2px}
-.bars i{flex:1;min-width:1px;background:#4a5566;border-radius:1px}
-.bars.hot{clip-path:inset(0 calc((1 - var(--t)) * 100%) 0 0)}
-.bars.hot i{background:#c3ccda}
-.playhead{position:absolute;top:0;bottom:0;left:calc(var(--t) * 100%);width:2px;margin-left:-1px;background:var(--playhead);z-index:3;pointer-events:none}
-.playhead::before{content:"";position:absolute;top:-1px;left:50%;width:11px;height:11px;margin-left:-5.5px;background:var(--playhead);border-radius:2px 2px 50% 50%}
-
 /* 3D cursor-tracking intro */
 .me3d{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-end;padding-top:12px;border-bottom:1px solid var(--line);background:var(--reel)}
-.me3d-glow{position:absolute;z-index:-1;right:max(2vw,calc((100vw - 1100px) / 2 - 60px));bottom:-18%;width:min(78vmin,760px);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,64,48,.62),rgba(190,24,24,.26) 55%,transparent 78%)}
+.me3d-glow{position:absolute;z-index:-1;right:max(2vw,calc((100vw - 1100px) / 2 - 60px));bottom:-18%;width:min(78vmin,760px);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(150,104,255,.6),rgba(96,52,210,.28) 55%,transparent 78%)}
 .me3d-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:end;gap:24px}
 .me3d-copy{align-self:center;padding-block:40px}
 .me3d-hi{margin:0 0 6px;font-size:1.25rem;color:var(--muted)}
@@ -199,15 +154,6 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 @media(max-width:760px){
   .bar nav{display:none}
   .bar .btn{margin-left:auto}
-  .hero{min-height:840px}
-  .stage{inset:0 0 auto 0;height:58%;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
-  .s-portrait img{object-position:50% 100%}
-  .hero::after{background:linear-gradient(0deg,var(--reel) 0,rgba(9,11,15,.9) 36%,transparent 62%)}
-  .hero .hero-title{font-size:clamp(3rem,13vw,4.6rem)}
-  .hero .hero-title span{display:inline}
-  .inner{gap:28px;padding-block:40px 20px}
-  .tl-body{grid-template-columns:24px 1fr;gap:0 8px}
-  .lane,.labels span{height:24px}
   .svcs,.profiles{grid-template-columns:1fr}
   .svc{min-height:0}
   .head,.about{grid-template-columns:1fr}
@@ -256,53 +202,6 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
   </div>
 </section>
 
-
-<section class="hero" aria-labelledby="hero-title">
-  <div class="stage" aria-hidden="true">
-    <div class="slide s-beach on"><img src="assets/beach.jpg" alt="" width="1086" height="1448" fetchpriority="high"></div>
-    <div class="slide s-portrait"><img src="assets/portrait.jpg" alt="" width="1024" height="1536"></div>
-    <div class="slide s-bike"><img src="assets/bike-hero.jpg" alt="" width="1500" height="1500"></div>
-  </div>
-
-  <div class="wrap inner">
-    <div>
-      <h2 class="hero-title" id="hero-title"><span>Edited to be</span> <span>watched.</span></h2>
-      <p class="lead">Lovely Dinesh makes Reels, AI story videos, photo edits and designs for paid orders. Send your idea on Instagram and I'll send back a quote.</p>
-      <div class="actions">
-        <a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order on Instagram</a>
-        <a class="btn" href="#services">See services</a>
-      </div>
-    </div>
-
-    <div class="tl" role="img" aria-label="Animated sample of a video editing timeline with a playhead moving across three clips">
-      <div class="tl-top">
-        <span class="rec"><i></i><span id="tc">00:00:00:00</span></span>
-        <span>Showreel, 15 seconds</span>
-      </div>
-      <div class="tl-body">
-        <div class="labels"><span>V2</span><span>V1</span><span>A1</span></div>
-        <div class="lanes">
-          <div class="ruler"><span>0s</span><span>5s</span><span>10s</span><span>15s</span></div>
-          <div class="lane v2">
-            <div class="clip" style="left:6%;width:20%">Titles</div>
-            <div class="clip" style="left:40%;width:18%">Grade</div>
-            <div class="clip" style="left:72%;width:20%">Poster pack</div>
-          </div>
-          <div class="lane v1">
-            <div class="clip c-blue on" style="left:0;width:33%">Reel cut</div>
-            <div class="clip c-tung" style="left:33.5%;width:33%">Photo edit</div>
-            <div class="clip c-teal" style="left:67%;width:33%">Story scene</div>
-          </div>
-          <div class="lane wave">
-            <div class="bars" id="bars"></div>
-            <div class="bars hot" id="barsHot"></div>
-          </div>
-          <div class="playhead"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <section class="sec" id="services">
   <div class="wrap">
@@ -520,60 +419,6 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
     }, {threshold: .15});
     boxes.forEach(function(b){ io.observe(b); });
   }
-
-  var slides = [].slice.call(document.querySelectorAll('.slide'));
-  var clips = [].slice.call(document.querySelectorAll('.v1 .clip'));
-  var tl = document.querySelector('.tl');
-  var code = document.getElementById('tc');
-  var hero = document.querySelector('.hero');
-  var DURATION = 15000, count = slides.length, current = 0;
-
-  // Waveform bars (fixed pattern, no randomness so it never changes between loads)
-  [document.getElementById('bars'), document.getElementById('barsHot')].forEach(function(box){
-    var html = '';
-    for (var i = 0; i < 110; i++) {
-      var h = 18 + 74 * Math.abs(Math.sin(i * 0.41) * Math.cos(i * 0.13 + 1));
-      html += '<i style="height:' + h.toFixed(0) + '%"></i>';
-    }
-    box.innerHTML = html;
-  });
-
-  function pad(n){ return n < 10 ? '0' + n : '' + n; }
-
-  function show(i){
-    current = i;
-    slides.forEach(function(s, k){ s.classList.toggle('on', k === i); });
-    clips.forEach(function(c, k){ c.classList.toggle('on', k === i); });
-  }
-
-  function render(t){
-    tl.style.setProperty('--t', t.toFixed(4));
-    var ms = t * DURATION;
-    var sec = Math.floor(ms / 1000);
-    var frame = Math.floor((ms % 1000) / 1000 * 30);
-    code.textContent = '00:00:' + pad(sec) + ':' + pad(frame);
-    var idx = Math.min(count - 1, Math.floor(t * count));
-    if (idx !== current) show(idx);
-  }
-
-  render(0);
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  var elapsed = 0, last = null, visible = true;
-
-  function tick(now){
-    if (last !== null && visible) elapsed = (elapsed + (now - last)) % DURATION;
-    last = now;
-    render(elapsed / DURATION);
-    requestAnimationFrame(tick);
-  }
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function(entries){
-      visible = entries[0].isIntersecting;
-    }).observe(hero);
-  }
-  requestAnimationFrame(tick);
 })();
 </script>
 <script>
