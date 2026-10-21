@@ -453,6 +453,7 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
     canvas.classList.add('on');
     still.style.visibility = 'hidden';
 
+    var touching = false, touchEnd = 0;
     if (!touchOnly) {
       window.addEventListener('pointermove', function(e){
         if (e.pointerType === 'touch') return;
@@ -461,6 +462,16 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
       document.documentElement.addEventListener('mouseleave', function(){ inside = false; });
       document.documentElement.addEventListener('mouseenter', function(){ inside = true; });
     }
+    // Finger: the head turns towards wherever you touch or drag, then settles back after a moment
+    function onTouch(e){
+      var t = e.touches && e.touches[0]; if (!t) return;
+      pointer.x = t.clientX; pointer.y = t.clientY; touching = true; touchEnd = 0;
+    }
+    function onTouchEnd(){ touching = false; touchEnd = performance.now(); }
+    window.addEventListener('touchstart', onTouch, {passive: true});
+    window.addEventListener('touchmove', onTouch, {passive: true});
+    window.addEventListener('touchend', onTouchEnd, {passive: true});
+    window.addEventListener('touchcancel', onTouchEnd, {passive: true});
 
     var cur = 0, curIdx = -2, wasCenter = true, last = performance.now(), raf = 0, onScreen = true;
 
@@ -469,8 +480,9 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
       var dt = Math.min(0.05, (now - last) / 1000); last = now;
       var wantCenter = false, target = 0;
 
-      if (!touchOnly && moved) {
-        if (!inside) { wantCenter = true; }
+      var fingerLive = touching || (touchEnd > 0 && now - touchEnd < 2500);
+      if ((!touchOnly && moved) || fingerLive) {
+        if (!inside && !fingerLive) { wantCenter = true; }
         else {
           var r = canvas.getBoundingClientRect();
           var dx = pointer.x - (r.left + r.width * 0.48);
@@ -480,7 +492,7 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
           else target = Math.atan2(dy, dx) * 180 / Math.PI;
         }
       } else {
-        // no mouse (phones) or before the first mouse move: look around slowly
+        // nobody is pointing (phone with no touch, or before the first mouse move): look around slowly
         var ph = ((now / 1000) % 9) / 9;
         if (ph < 0.2) wantCenter = true; else target = ((ph - 0.2) / 0.8) * 360 - 180;
       }
