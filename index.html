@@ -16,6 +16,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add("js")</script>
 <style>
+@font-face{font-family:"Fredoka";font-style:normal;font-weight:300 700;font-display:swap;src:url(assets/fonts/fredoka-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"Caveat";font-style:normal;font-weight:400 700;font-display:swap;src:url(assets/fonts/caveat-latin-wght-normal.woff2) format("woff2")}
 :root{
   --reel:#090b0f;
   --bin:#11151b;
@@ -25,6 +27,8 @@
   --playhead:#ff4a3d;
   --tungsten:#f2b75b;
   --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --cute:"Fredoka",ui-rounded,"Baloo 2",system-ui,sans-serif;
+  --hand:"Caveat","Segoe Print","Bradley Hand",cursive;
   --body:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
@@ -74,6 +78,28 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
   .me3d-copy h1{font-size:clamp(3.8rem,19vw,5.6rem)}
   .me3d-bio{max-width:none}
 }
+
+/* Cute type for the header and intro */
+.brand{font-family:var(--cute);font-weight:600;font-size:1.6rem;text-transform:none;letter-spacing:-.01em}
+.bar nav a{font-family:var(--cute);font-weight:500;font-size:1.02rem}
+.bar .btn,.me3d .btn{font-family:var(--cute);font-weight:600;border-radius:999px}
+.bar .btn.sm{padding:9px 20px;font-size:1rem}
+.me3d .btn{padding:14px 28px;font-size:1.1rem}
+.me3d-hi{margin:0 0 2px;font-family:var(--hand);font-weight:700;font-size:2.1rem;line-height:1;color:#cdbcff}
+.wave{display:inline-block;transform-origin:70% 80%;animation:wave 1.7s .7s 2 ease-in-out}
+@keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%,50%{transform:rotate(16deg)}20%,40%{transform:rotate(-8deg)}}
+.me3d-copy h1{font-family:var(--cute);font-weight:700;text-transform:none;font-size:clamp(3.8rem,9.6vw,7.8rem);line-height:1;letter-spacing:-.02em;filter:drop-shadow(0 6px 26px rgba(140,100,255,.45))}
+.me3d-copy h1 span{display:block;width:fit-content;padding:0 .12em .08em 0;background:linear-gradient(180deg,#fff 38%,#cdbcff);-webkit-background-clip:text;background-clip:text;color:transparent;animation:pop .8s cubic-bezier(.3,1.7,.5,1) backwards}
+.me3d-copy h1 span:nth-child(2){animation-delay:.14s}
+@keyframes pop{from{opacity:0;transform:translateY(22px) scale(.86)}}
+.me3d-bio{font-family:var(--cute);font-weight:400;font-size:1.18rem;line-height:1.55;color:#d9d3ee}
+@media(max-width:760px){.me3d-copy h1{font-size:clamp(3.4rem,17vw,5rem)}}
+
+/* Light effect on the order buttons */
+.btn.primary{position:relative;overflow:hidden;isolation:isolate;animation:orderGlow 2.6s ease-in-out infinite}
+.btn.primary::after{content:"";position:absolute;z-index:-1;top:-30%;bottom:-30%;left:-70%;width:45%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.85),transparent);transform:skewX(-22deg);animation:orderShine 3.4s ease-in-out infinite}
+@keyframes orderShine{0%,50%{left:-70%}100%{left:140%}}
+@keyframes orderGlow{0%,100%{box-shadow:0 0 0 0 rgba(255,74,61,.5),0 6px 18px -8px rgba(255,74,61,.7)}50%{box-shadow:0 0 0 9px rgba(255,74,61,0),0 10px 30px -6px rgba(255,74,61,.95)}}
 
 /* Sections */
 .sec{padding-block:clamp(64px,9vw,112px)}
@@ -187,8 +213,8 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
   <div class="me3d-glow" aria-hidden="true"></div>
   <div class="wrap me3d-inner">
     <div class="me3d-copy">
-      <p class="me3d-hi">Hi, I'm</p>
-      <h1 id="me-title">Lovely<br>Dinesh</h1>
+      <p class="me3d-hi">Hi, I'm <span class="wave" aria-hidden="true">👋</span></p>
+      <h1 id="me-title"><span>Lovely</span> <span>Dinesh</span></h1>
       <p class="me3d-bio">Video editor and creative designer. I turn your idea into Reels, AI story videos, photo edits and designs. All work is paid.</p>
       <div class="actions">
         <a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order now</a>
