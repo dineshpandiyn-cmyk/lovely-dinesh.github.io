@@ -65,8 +65,8 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 .s-bike img{object-position:50% 12%}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,var(--reel) 0,rgba(9,11,15,.85) 22%,transparent 55%),linear-gradient(90deg,var(--reel) 0,rgba(9,11,15,.6) 30%,transparent 55%)}
 .inner{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:40px;padding-block:56px 28px}
-.hero h1{font-weight:900;font-size:clamp(4rem,9.5vw,9rem);line-height:.86;letter-spacing:-.005em;text-shadow:0 6px 40px rgba(0,0,0,.5)}
-.hero h1 span{display:block}
+.hero .hero-title{font-weight:900;font-size:clamp(4rem,9.5vw,9rem);line-height:.86;letter-spacing:-.005em;text-shadow:0 6px 40px rgba(0,0,0,.5)}
+.hero .hero-title span{display:block}
 .lead{max-width:44ch;margin:22px 0 0;font-size:1.12rem;color:#d3dae6}
 .hero .actions{margin-top:28px}
 
@@ -97,6 +97,28 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 .bars.hot i{background:#c3ccda}
 .playhead{position:absolute;top:0;bottom:0;left:calc(var(--t) * 100%);width:2px;margin-left:-1px;background:var(--playhead);z-index:3;pointer-events:none}
 .playhead::before{content:"";position:absolute;top:-1px;left:50%;width:11px;height:11px;margin-left:-5.5px;background:var(--playhead);border-radius:2px 2px 50% 50%}
+
+/* 3D cursor-tracking intro */
+.me3d{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-end;padding-top:12px;border-bottom:1px solid var(--line);background:var(--reel)}
+.me3d-glow{position:absolute;z-index:-1;right:max(2vw,calc((100vw - 1100px) / 2 - 60px));bottom:-18%;width:min(78vmin,760px);aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(255,64,48,.62),rgba(190,24,24,.26) 55%,transparent 78%)}
+.me3d-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);align-items:end;gap:24px}
+.me3d-copy{align-self:center;padding-block:40px}
+.me3d-hi{margin:0 0 6px;font-size:1.25rem;color:var(--muted)}
+.me3d-copy h1{font-weight:900;font-size:clamp(4.2rem,11vw,9.4rem);line-height:.84;letter-spacing:-.005em}
+.me3d-bio{max-width:36ch;margin:24px 0 28px;font-size:1.08rem;color:#cfd6e2}
+.me3d-stage{position:relative;width:min(100%,700px);justify-self:end;aspect-ratio:588/480;-webkit-mask-image:linear-gradient(180deg,#000 82%,transparent);mask-image:linear-gradient(180deg,#000 82%,transparent)}
+.me3d-stage img,.me3d-stage canvas{position:absolute;inset:0;display:block;width:100%;height:100%}
+.me3d-stage canvas{opacity:0}
+.me3d-stage canvas.on{opacity:1}
+@media(max-width:760px){
+  .me3d{padding-top:0}
+  .me3d-inner{grid-template-columns:1fr;gap:0}
+  .me3d-stage{order:-1;justify-self:center;width:min(100%,440px);margin-top:12px}
+  .me3d-copy{padding-block:8px 44px}
+  .me3d-glow{right:50%;transform:translateX(50%);bottom:auto;top:2%;width:96vw}
+  .me3d-copy h1{font-size:clamp(3.8rem,19vw,5.6rem)}
+  .me3d-bio{max-width:none}
+}
 
 /* Sections */
 .sec{padding-block:clamp(64px,9vw,112px)}
@@ -181,8 +203,8 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
   .stage{inset:0 0 auto 0;height:58%;-webkit-mask-image:linear-gradient(180deg,#000 62%,transparent);mask-image:linear-gradient(180deg,#000 62%,transparent)}
   .s-portrait img{object-position:50% 100%}
   .hero::after{background:linear-gradient(0deg,var(--reel) 0,rgba(9,11,15,.9) 36%,transparent 62%)}
-  .hero h1{font-size:clamp(3rem,13vw,4.6rem)}
-  .hero h1 span{display:inline}
+  .hero .hero-title{font-size:clamp(3rem,13vw,4.6rem)}
+  .hero .hero-title span{display:inline}
   .inner{gap:28px;padding-block:40px 20px}
   .tl-body{grid-template-columns:24px 1fr;gap:0 8px}
   .lane,.labels span{height:24px}
@@ -215,6 +237,26 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 
 <main id="top">
 
+<section class="me3d" aria-labelledby="me-title">
+  <div class="me3d-glow" aria-hidden="true"></div>
+  <div class="wrap me3d-inner">
+    <div class="me3d-copy">
+      <p class="me3d-hi">Hi, I'm</p>
+      <h1 id="me-title">Lovely<br>Dinesh</h1>
+      <p class="me3d-bio">Video editor and creative designer. I turn your idea into Reels, AI story videos, photo edits and designs. All work is paid.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order now</a>
+        <a class="btn" href="#contact">Let's talk</a>
+      </div>
+    </div>
+    <div class="me3d-stage">
+      <img class="me3d-still" src="assets/3d/frames/center.webp" alt="3D portrait of Lovely Dinesh in a black jacket and white T-shirt" width="588" height="480" fetchpriority="high">
+      <canvas id="me3d" width="588" height="480" role="img" aria-label="3D portrait of Lovely Dinesh that follows your cursor"></canvas>
+    </div>
+  </div>
+</section>
+
+
 <section class="hero" aria-labelledby="hero-title">
   <div class="stage" aria-hidden="true">
     <div class="slide s-beach on"><img src="assets/beach.jpg" alt="" width="1086" height="1448" fetchpriority="high"></div>
@@ -224,7 +266,7 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 
   <div class="wrap inner">
     <div>
-      <h1 id="hero-title"><span>Edited to be</span> <span>watched.</span></h1>
+      <h2 class="hero-title" id="hero-title"><span>Edited to be</span> <span>watched.</span></h2>
       <p class="lead">Lovely Dinesh makes Reels, AI story videos, photo edits and designs for paid orders. Send your idea on Instagram and I'll send back a quote.</p>
       <div class="actions">
         <a class="btn primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order on Instagram</a>
@@ -532,6 +574,93 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
     }).observe(hero);
   }
   requestAnimationFrame(tick);
+})();
+</script>
+<script>
+(function(){
+  var canvas = document.getElementById('me3d');
+  if (!canvas || !canvas.getContext) return;
+  // Reduced motion: keep the still portrait, no tracking
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var still = document.querySelector('.me3d-still');
+  var section = document.querySelector('.me3d');
+  var ctx = canvas.getContext('2d');
+  var N = 64, STEP = 360 / N, base = 'assets/3d/frames/';
+  var frames = [], center = new Image(), loaded = 0, failed = false;
+  var touchOnly = window.matchMedia('(hover: none)').matches;
+  var pointer = {x: 0, y: 0}, moved = false, inside = true;
+
+  function onLoad(){ loaded++; if (!failed && loaded === N + 1) start(); }
+  function onError(){ failed = true; }
+  center.onload = onLoad; center.onerror = onError; center.src = base + 'center.webp';
+  for (var i = 0; i < N; i++) {
+    var im = new Image();
+    im.onload = onLoad; im.onerror = onError;
+    im.src = base + 'f' + (i < 10 ? '0' + i : i) + '.webp';
+    frames.push(im);
+  }
+
+  function draw(img){ ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.drawImage(img, 0, 0); }
+
+  function start(){
+    draw(center);
+    canvas.classList.add('on');
+    still.style.visibility = 'hidden';
+
+    if (!touchOnly) {
+      window.addEventListener('pointermove', function(e){
+        if (e.pointerType === 'touch') return;
+        pointer.x = e.clientX; pointer.y = e.clientY; moved = true; inside = true;
+      }, {passive: true});
+      document.documentElement.addEventListener('mouseleave', function(){ inside = false; });
+      document.documentElement.addEventListener('mouseenter', function(){ inside = true; });
+    }
+
+    var cur = 0, curIdx = -2, wasCenter = true, last = performance.now(), raf = 0, onScreen = true;
+
+    function tick(now){
+      raf = requestAnimationFrame(tick);
+      var dt = Math.min(0.05, (now - last) / 1000); last = now;
+      var wantCenter = false, target = 0;
+
+      if (!touchOnly && moved) {
+        if (!inside) { wantCenter = true; }
+        else {
+          var r = canvas.getBoundingClientRect();
+          var dx = pointer.x - (r.left + r.width * 0.48);
+          var dy = pointer.y - (r.top + r.height * 0.33);
+          var dead = Math.max(70, 0.1 * Math.min(window.innerWidth, window.innerHeight));
+          if (Math.sqrt(dx * dx + dy * dy) < dead) wantCenter = true;
+          else target = Math.atan2(dy, dx) * 180 / Math.PI;
+        }
+      } else {
+        // no mouse (phones) or before the first mouse move: look around slowly
+        var ph = ((now / 1000) % 9) / 9;
+        if (ph < 0.2) wantCenter = true; else target = ((ph - 0.2) / 0.8) * 360 - 180;
+      }
+
+      if (wantCenter) {
+        if (curIdx !== -1) { curIdx = -1; draw(center); }
+        wasCenter = true;
+        return;
+      }
+      if (wasCenter) { cur = target; wasCenter = false; }
+      var d = ((target - cur + 540) % 360) - 180;
+      cur += d * (1 - Math.pow(1 - 0.26, dt * 60));
+      var norm = ((cur % 360) + 360) % 360;
+      var idx = Math.round((((norm - 270) + 360) % 360) / STEP) % N;
+      if (idx !== curIdx) { curIdx = idx; draw(frames[idx]); }
+    }
+
+    function run(){ if (!raf && onScreen && !document.hidden) { last = performance.now(); raf = requestAnimationFrame(tick); } }
+    function stop(){ if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function(es){ onScreen = es[0].isIntersecting; onScreen ? run() : stop(); }).observe(section);
+    }
+    document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : run(); });
+    run();
+  }
 })();
 </script>
 </body>
