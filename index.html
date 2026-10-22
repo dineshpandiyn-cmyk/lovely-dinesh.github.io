@@ -153,6 +153,25 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .pair img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line);border-radius:12px}
 
+/* Certificates */
+.certs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.svc.cert{min-height:0;padding:14px 14px 22px}
+.cert-shot{display:block;position:relative;overflow:hidden;border-radius:10px;background:#fff;aspect-ratio:1200/927;margin-bottom:6px;cursor:zoom-in}
+.cert-shot img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.svc.cert:hover .cert-shot img{transform:scale(1.04)}
+.svc.cert .tag,.svc.cert h3,.svc.cert .desc,.svc.cert .verify{margin-inline:10px}
+.svc.cert .tag{margin-top:16px}
+.svc.cert h3{font-size:1.2rem}
+.svc.cert .desc{margin-top:8px;font-size:.93rem}
+.verify{align-self:flex-start;margin-top:12px;font-weight:600;color:var(--c);text-decoration:none;border-bottom:1px solid currentColor}
+.verify:hover{filter:brightness(1.2)}
+.certbox{width:min(94vw,1100px);max-height:92vh;padding:0;border:0;background:transparent;overflow:visible}
+.certbox::backdrop{background:rgba(5,6,10,.85);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.certbox img{display:block;width:100%;height:auto;max-height:88vh;object-fit:contain;border-radius:12px;background:#fff}
+.certx{position:absolute;top:-14px;right:-6px;z-index:2;width:42px;height:42px;border-radius:50%;border:1px solid #3a4452;background:#11151b;color:var(--text);font:600 1rem/1 var(--body);cursor:pointer}
+.certx:hover{border-color:var(--tungsten)}
+@media(max-width:760px){.certs{grid-template-columns:1fr}.certx{top:-18px;right:2px}}
+
 /* Contact */
 .contact{padding:clamp(28px,6vw,64px);border:1px solid var(--line);border-radius:16px;background:var(--bin)}
 .contact h2{font-size:clamp(3.2rem,10vw,8rem);line-height:.88;font-weight:900}
@@ -202,6 +221,7 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
     <a href="#services">Services</a>
     <a href="#reels">Reels</a>
     <a href="#about">About</a>
+    <a href="#certificates">Certificates</a>
     <a href="#contact">Contact</a>
   </nav>
   <a class="btn sm primary" href="https://www.instagram.com/dr_story_nest/" target="_blank" rel="noopener noreferrer">Order</a>
@@ -384,6 +404,48 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
   </div>
 </section>
 
+<section class="sec" id="certificates">
+  <div class="wrap">
+    <div class="head">
+      <h2>Certificates</h2>
+      <p>Courses I finished and was tested on. Tap a certificate to see it full size.</p>
+    </div>
+    <div class="certs">
+      <article class="svc cert c-gold">
+        <a class="cert-shot" href="assets/certs/hubspot-digital-marketing.jpg" target="_blank" rel="noopener noreferrer" data-title="Digital Marketing Certified" aria-label="View the Digital Marketing Certified certificate full size">
+          <img src="assets/certs/hubspot-digital-marketing.jpg" alt="HubSpot Digital Marketing certificate for K. Dinesh" width="1200" height="927" loading="lazy">
+        </a>
+        <p class="tag">HubSpot Academy</p>
+        <h3>Digital Marketing Certified</h3>
+        <p class="desc">Valid Sep 10, 2026 to Oct 9, 2028</p>
+        <p class="desc">Certification code e919612c0c294f6693dbd3b5e9937f2d</p>
+      </article>
+      <article class="svc cert c-blue">
+        <a class="cert-shot" href="assets/certs/ibm-ai-fundamentals.jpg" target="_blank" rel="noopener noreferrer" data-title="AI Fundamentals: Foundations for Understanding AI" aria-label="View the AI Fundamentals: Foundations for Understanding AI certificate full size">
+          <img src="assets/certs/ibm-ai-fundamentals.jpg" alt="IBM SkillsBuild certificate for K Dinesh, AI Fundamentals: Foundations for Understanding AI" width="1200" height="927" loading="lazy">
+        </a>
+        <p class="tag">IBM SkillsBuild</p>
+        <h3>AI Fundamentals: Foundations for Understanding AI</h3>
+        <p class="desc">Issued Sep 12, 2026</p><a class="verify" href="https://www.credly.com/go/BVkvOvoE" target="_blank" rel="noopener noreferrer">Verify on Credly</a>
+      </article>
+      <article class="svc cert c-green">
+        <a class="cert-shot" href="assets/certs/google-analytics.jpg" target="_blank" rel="noopener noreferrer" data-title="Google Analytics Certification (2026)" aria-label="View the Google Analytics Certification (2026) certificate full size">
+          <img src="assets/certs/google-analytics.jpg" alt="Google Analytics Certification (2026) for K. Dinesh" width="1200" height="927" loading="lazy">
+        </a>
+        <p class="tag">Google</p>
+        <h3>Google Analytics Certification (2026)</h3>
+        <p class="desc">Issued Sep 10, 2026, expires Sep 10, 2027</p>
+        <p class="desc">Certificate ID 193767436</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<dialog class="certbox" id="certbox" aria-label="Certificate">
+  <form method="dialog"><button class="certx" aria-label="Close">&#10005;</button></form>
+  <img id="certimg" alt="">
+</dialog>
+
 <section class="sec" id="contact">
   <div class="wrap">
     <div class="contact">
@@ -544,6 +606,22 @@ h2{font-size:clamp(2.6rem,6vw,4.4rem);line-height:.92;font-weight:800;letter-spa
     document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : run(); });
     run();
   }
+})();
+</script>
+<script>
+(function(){
+  var box = document.getElementById('certbox');
+  if (!box || typeof box.showModal !== 'function') return;   // old browsers just open the image in a new tab
+  var img = document.getElementById('certimg');
+  [].forEach.call(document.querySelectorAll('.cert-shot'), function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      img.src = a.getAttribute('href');
+      img.alt = a.querySelector('img').alt;
+      box.showModal();
+    });
+  });
+  box.addEventListener('click', function(e){ if (e.target === box) box.close(); });
 })();
 </script>
 </body>
